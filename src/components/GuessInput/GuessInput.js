@@ -1,5 +1,7 @@
 import React from 'react';
 
+import GuessTrials, { guesstrials } from '../GuessTrials';
+
 function GuessInput() {
   const [guessInput, setGuessInput] = React.useState('');
   const [guessTrials, setGuessTrials] = React.useState([]);
@@ -11,11 +13,7 @@ function GuessInput() {
   }
   return (
     <>  
-        <div className="guess-results">
-          {guessTrials.map(el=>(
-            <p className="guess" key={crypto.randomUUID()}>{el}</p>
-          ))}
-        </div>
+        <GuessTrials guessTrials={guessTrials}/>
         <form className="guess-input-wrapper" onSubmit={ (event) => {
           event.preventDefault();
           if(guessInput.length<5){
