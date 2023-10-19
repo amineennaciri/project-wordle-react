@@ -8,9 +8,10 @@ function Guess({range,guessTrials}) {
   const result = checkGuess(guessTrials,answer);
   return (
     <>
-        {range(5).map((el) => (
-          <Cell letter={result[el]}
-                status={result[el]}
+        {range(5).map((el, index) => (
+          <Cell letter={result ? result[el].letter : undefined}
+                status={result ? result[el].status : undefined}
+                key={index}
           />              
         ))}
     </>
