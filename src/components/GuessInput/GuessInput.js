@@ -1,28 +1,27 @@
 import React from 'react';
 
-function GuessInput({userGuess,setUserGuess,guesses,setGuesses}) {
+function GuessInput({handleSubmitGuess}) {
+  const [tentativeGuess,setTentativeGuess] = React.useState('');
 
   function handleSubmit(event){
     event.preventDefault();
-    if(userGuess.length>4){
-      console.log({guess: userGuess});//show answer
-      setGuesses(()=>[...guesses,userGuess]);//add to the list of trials
-      console.log(guesses);
-      setUserGuess('');//reset
-    }
+/*     if(tentativeGuess.length>4){ */
+      console.log({guess: tentativeGuess});//show answer
+      handleSubmitGuess(tentativeGuess);//update the guesses Array
+      setTentativeGuess('');//reset
+/*     } */
   }
   return (
     <>
-      <div className="guess-results">
-        <p className='guess'>Hello</p>
-        {guesses.map((el)=>{
-          <p className="guess" key={guesses.indexOf(el)}>el</p>
-        })}
-      </div>
     <form className="guess-input-wrapper" onSubmit={handleSubmit}>
       <label htmlFor="guess-input">Enter guess:</label>
-      <input id="guess-input" type="text" minLength={5} maxLength={5} value={userGuess}
-      onChange={(event)=>setUserGuess(event.target.value.toUpperCase())}/>
+      <input id="guess-input" type="text" minLength={5} maxLength={5}
+      pattern="[a-zA-Z]{5}"
+      title="5 letter word"
+      value={tentativeGuess}
+      onChange={(event)=>{
+        const nextGuess = event.target.value.toUpperCase();
+        setTentativeGuess(nextGuess)}}/>
     </form>
     </>
   );
