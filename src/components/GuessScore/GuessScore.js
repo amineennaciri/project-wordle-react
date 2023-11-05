@@ -1,6 +1,6 @@
 import React from 'react';
-import { answer } from '../Game';
-function GuessScore({guesses}) {
+/* import { answer } from '../Game'; */
+function GuessScore({guesses,handleRestartGame,answer}) {
   if(guesses.includes(answer)){
     return (
       <div className="happy banner">
@@ -8,6 +8,7 @@ function GuessScore({guesses}) {
           <strong>Congratulations!</strong> Got it in {' '}
           <strong>{guesses.length>1?`${guesses.length} guesses`:`${guesses.length} guess`}</strong>.
         </p>
+        <button onClick={handleRestartGame}>Restart the game!</button>
       </div>
     );
   }else if(guesses.length>5){
@@ -16,6 +17,7 @@ function GuessScore({guesses}) {
         <p>
           Sorry, the correct answer is <strong>{answer}</strong>.
         </p>
+        <button onClick={handleRestartGame}>Restart the game!</button>
       </div>
 
     );

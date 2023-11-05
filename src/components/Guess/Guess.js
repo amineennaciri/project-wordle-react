@@ -1,8 +1,8 @@
 import React from 'react';
 import { range } from '../../utils';
 import { checkGuess } from '../../game-helpers';
-import { answer } from '../Game';
-function Guess({guess}) {
+/* import { answer } from '../Game'; */
+function Guess({guess, answer}) {
     const guessChecked = checkGuess(guess,answer);
     /* console.log(guessChecked) */
   return (
